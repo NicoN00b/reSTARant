@@ -6,7 +6,7 @@
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_{Currently finished testing for Restaraunt class, next up will be the last class. When having bugs be sure to look at database for oddentities and if its a null pointer expection, that means that we want reference thats not there. Be sure to impament the DOA from the database(sql) to page. }_
 
 ## Setup/Installation Requirements
 
