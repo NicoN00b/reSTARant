@@ -8,18 +8,18 @@ import java.util.List;
 
 public interface UserDao {
 
-    void add (User user);
-    //read
+   void add (User user);
 
-    List<User> getAll();
+
+   List<User> getAll();
 
    User findById(int id);
 
-//    //update
-  void update(int id, String name);
-//    //delete
+
+   void update(int id, String name);
+
    void deleteById(int id);
-//    void clearAllTasks();
-//
-//
+
+   void clearAllUsers();
+
 }
