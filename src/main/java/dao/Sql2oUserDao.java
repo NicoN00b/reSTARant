@@ -45,4 +45,27 @@ public class Sql2oUserDao implements UserDao {
                     .executeAndFetch(User.class);
         }
     }
+
+    public void update(int id, String newName){
+        String sql = "UPDATE users SET name = :name WHERE id = :id";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("name", newName)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void deleteById(int id) {
+        String sql = "DELETE from users WHERE id=:id";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
 }

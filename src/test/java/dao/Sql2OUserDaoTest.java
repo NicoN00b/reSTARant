@@ -66,6 +66,24 @@ public class Sql2OUserDaoTest {
         assertEquals(0, userDao.getAll().size());
     }
 
+    @Test
+    public void updateChangesUserContent() throws Exception {
+
+        User user = new User("tommyPickleHands");
+        userDao.add(user);
+
+        userDao.update(user.getId(),"lilAndPhil");
+        User updatedUser = userDao.findById(user.getId()); //why do I need to refind this?
+        assertNotEquals(user, updatedUser.getName());
+    }
+
+    @Test
+    public void deleteByIdDeletesCorrectUser() throws Exception {
+        User user = setupNewUser();
+        userDao.add(user);
+        userDao.deleteById(user.getId());
+        assertEquals(0, userDao.getAll().size());
+    }
 
     public User setupNewUser(){
 
