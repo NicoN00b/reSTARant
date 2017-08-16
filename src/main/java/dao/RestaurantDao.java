@@ -19,6 +19,7 @@ public interface RestaurantDao {
     void update(int id, String name, String location);
 //    //delete
     void deleteById(int id);
-//    void clearAllRestaurants();
+
+    void clearAllRestaurants();
 
 }

@@ -67,6 +67,18 @@ public class Sql2oRestaurantDaoTest {
         assertEquals(0, restaurantDao.getAll().size());
     }
 
+    @Test
+    public void clearAllClearsAll() throws Exception {
+        Restaurant restaurant = setupNewRestaurant();
+        Restaurant otherRestaurant = new Restaurant("pickle rick's rickle stand", "vantucky");
+        restaurantDao.add(restaurant);
+        restaurantDao.add(otherRestaurant);
+        int daoSize = restaurantDao.getAll().size();
+        restaurantDao.clearAllRestaurants();
+        assertTrue(daoSize > 0 && restaurantDao.getAll().size() == 0); //this is a little overcomplicated, but illustrates well how we might use `assertTrue` in a different way.
+    }
+
+
     public Restaurant setupNewRestaurant() {
 
         return new Restaurant("brrito", "nome, alaska");

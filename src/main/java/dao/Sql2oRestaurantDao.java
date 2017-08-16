@@ -49,7 +49,7 @@ public class Sql2oRestaurantDao implements RestaurantDao { //implementing our in
                     .executeAndFetchFirst(Restaurant.class);
         }
     }
-    @Override
+
     public void update(int id, String newName, String newLocation){
         String sql = "UPDATE restaurants SET (name, location) = (:name, :location) WHERE id=:id"; //raw sql
         try(Connection con = sql2o.open()){
@@ -59,6 +59,26 @@ public class Sql2oRestaurantDao implements RestaurantDao { //implementing our in
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void deleteById(int id) {
+        String sql = "DELETE from restaurants WHERE id=:id";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
+
+    public void clearAllRestaurants() {
+        String sql = "DELETE from restaurants";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql).executeUpdate();
+        } catch (Sql2oException ex){
             System.out.println(ex);
         }
     }
