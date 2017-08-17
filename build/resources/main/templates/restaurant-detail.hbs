@@ -1,0 +1,30 @@
+{{#partial "content"}}
+    <p> {{restaurant.name}} </p>
+    <p> {{restaurant.location}} </p>
+    <!--<p> {{restaurant.rating}} </p>-->
+
+
+    <!--<ul>-->
+        <!--{{#each review}}-->
+            <!--<li>-->
+                <!--<h5>Rating</h5>-->
+                <!--<p> {{review.rating}}</p>-->
+                <!--<h5>Review</h5>-->
+                <!--<p> {{review.content}}</p>-->
+
+                <!--{{#if completed}}-->
+                    <!--<span class="glyphicon glyphicon-star" aria-hidden="true"></span>  Completed-->
+                <!--{{else}}-->
+                    <!--<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Open-->
+                <!--{{/if}}-->
+                <!--<br>-->
+                <!--<a href="/reviews/update">Edit this review</a><br>-->
+                <!--<a href="/reviews/delete">DELETE this review (These things cannot be undone)</a>-->
+            <!--</li>-->
+        <!--{{/each}}-->
+    <!--</ul>-->
+
+
+{{/partial}}
+
+{{> layout.hbs}}

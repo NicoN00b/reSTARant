@@ -18,11 +18,30 @@ _{Currently finished testing for Restaraunt class, next up will be the last clas
 
 ![Database schema](/src/main/resources/public/images/dbschema.jpg "Schema")
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+_One of the main problems while deugging today was that we edited our database and didn't remove the cache using the rm -f command on terminal.Always be sure to double check what is in your database and if there is a null value and all test are running try removing the database.
 
 ## Known Bugs
 
-_{Are there issues that have not yet been resolved that you want to let users know you know?  Outline any issues that would impact use of your application.  Share any workarounds that are in place. }_
+_//get: show new task form
+         get("/tasks/new", (req, res) -> {
+             Map<String, Object> model = new HashMap<>();
+             List<Category> allCategories = categoryDao.getAll();
+             model.put("categories", allCategories);
+             return new ModelAndView(model, "task-form.hbs");
+         }, new HandlebarsTemplateEngine());
+
+         //post: process new task form
+         post("/tasks/new", (request, response) -> {
+             Map<String, Object> model = new HashMap<>();
+             List<Category> allCategories = categoryDao.getAll();
+             model.put("categories", allCategories);
+             String description = request.queryParams("description");
+             int categoryId = Integer.parseInt(request.queryParams("category"));
+             Task newTask = new Task(description, categoryId);
+             taskDao.add(newTask);
+             model.put("task", newTask);
+             return new ModelAndView(model, "success.hbs");
+         }, new HandlebarsTemplateEngine());}_
 
 ## Support and contact details
 

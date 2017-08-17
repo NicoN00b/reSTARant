@@ -1,0 +1,18 @@
+<h1>Add a new Task!</h1>
+
+<form action="/tasks/new" method="post">
+    <label for="description">Task Description</label>
+    <input id="description" name="description" type="text">
+
+    <label for="category">Category</label>
+    <select id="category" name="category">
+        {{#if categories}}
+            {{#each categories}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        {{/if}}
+    </select>
+
+{{/if}}
+    <button type="submit" class="btn btn-default">Go!</button>
+</form>

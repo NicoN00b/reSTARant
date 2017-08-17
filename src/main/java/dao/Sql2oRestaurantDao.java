@@ -1,6 +1,7 @@
 package dao;
 
 import models.Restaurant;
+import models.Review;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -80,6 +81,15 @@ public class Sql2oRestaurantDao implements RestaurantDao { //implementing our in
             con.createQuery(sql).executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
+        }
+    }
+
+    public List<Review> getAllReviewsByRestaurant(int restaurantId) {
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM reviews WHERE restaurantId = :restaurantId")
+                    .addParameter("restaurantId", restaurantId)
+                    .addColumnMapping("RESTAURANTID", "restaurantId")
+                    .executeAndFetch(Review.class);
         }
     }
 
