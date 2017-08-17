@@ -1,7 +1,7 @@
 {{#partial "content"}}
 <h1>Add your review of {{restaurant.name}}</h1>
 
-<form action="/restaurants/{{restaurantId}}/reviews/new" method="post">
+<form action="/{{restaurantId}}/reviews/new" method="post">
     <h1>Rating</h1>
     <fieldset class="rating">
         <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>

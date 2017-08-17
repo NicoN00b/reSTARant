@@ -74,7 +74,7 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-        get("/restaurants/:restaurant_id",(request, response) -> {
+        get("/:restaurant_id",(request, response) -> {
             Map<String,Object>model = new HashMap<>();
             int idOfRestaurantToFind = Integer.parseInt(request.params("restaurant_id"));
             List<Restaurant> restaurants =restaurantDao.getAll();
@@ -95,7 +95,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //post: process new review form
-        post("/:restaurant_id/reviews/new", (request, response) -> {
+        post("restaurants/:restaurant_id/reviews/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfRestaurantToFind = Integer.parseInt(request.params("restaurant_id"));
             List<Restaurant> allRestaurants = restaurantDao.getAll();
