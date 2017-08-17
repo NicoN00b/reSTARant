@@ -87,15 +87,15 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get: show new review form
-        get("/restaurants/:restaurant_id/reviews/new", (req, res) -> {
+        get("/:restaurant_id/reviews/new", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Restaurant> allRestaurants = restaurantDao.getAll();
             model.put("restaurant", allRestaurants);
-            return new ModelAndView(model, "review-form.hbs");
+            return new ModelAndView(model, "review.hbs");
         }, new HandlebarsTemplateEngine());
 
         //post: process new review form
-        post("/restaurants/:restaurant_id/reviews/new", (request, response) -> {
+        post("/:restaurant_id/reviews/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Restaurant> allRestaurants = restaurantDao.getAll();
             model.put("restaurant", allRestaurants);

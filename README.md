@@ -22,6 +22,9 @@ _One of the main problems while deugging today was that we edited our database a
 
 ## Known Bugs
 
+To Remove expired database, open terminal check for databate with ls ... after finding name: rm -f name.db.*
+(force removal of all db files of a given name)
+
 _//get: show new task form
          get("/tasks/new", (req, res) -> {
              Map<String, Object> model = new HashMap<>();

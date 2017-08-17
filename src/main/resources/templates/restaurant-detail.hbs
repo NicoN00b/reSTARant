@@ -1,8 +1,9 @@
 {{#partial "content"}}
     <p> {{restaurant.name}} </p>
     <p> {{restaurant.location}} </p>
-    <!--<p> {{restaurant.rating}} </p>-->
+    <p> {{restaurant.rating}} </p>
 
+    <a href="/restaurants/{{restaurant_id}}/reviews/new">Review this Restaurant!</a>
 
     <ul>
         {{#each review}}
@@ -23,6 +24,8 @@
             </li>
         {{/each}}
     </ul>
+
+
 
 
 {{/partial}}
