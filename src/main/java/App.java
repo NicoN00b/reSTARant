@@ -97,6 +97,7 @@ public class App {
         //post: process new review form
         post("/:restaurant_id/reviews/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
+            int idOfRestaurantToFind = Integer.parseInt(request.params("restaurant_id"));
             List<Restaurant> allRestaurants = restaurantDao.getAll();
             model.put("restaurant", allRestaurants);
             int rating = Integer.parseInt(request.queryParams("rating"));

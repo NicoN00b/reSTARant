@@ -20,7 +20,7 @@ public class Sql2oReviewDao implements ReviewDao { //implementing our interface
 
     public void add(Review review) {
 
-        String sql = "INSERT INTO reviews (rating, content, restaurantId) VALUES (:rating, :content, :restaurantid)"; //raw sql
+        String sql = "INSERT INTO reviews (rating, content, restaurantId) VALUES (:rating, :content, :restaurantId)"; //raw sql
         try(Connection con = sql2o.open()){ //try to open a connection
             int id = (int) con.createQuery(sql) //make a new variable
                     .addParameter("rating", review.getRating())

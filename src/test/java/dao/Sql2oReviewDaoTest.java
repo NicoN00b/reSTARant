@@ -55,10 +55,10 @@ public class Sql2oReviewDaoTest {
     @Test
     public void updateChangesReviewRating() throws Exception {
         int rating = 5;
-        Review review = new Review (5, "meh");
+        Review review = new Review (5, "meh", 1);
         reviewDao.add(review);
 
-        reviewDao.update(1, 8, "Meh, but the Chowder was good");
+        reviewDao.update(1, 8, "Meh, but the Chowder was good", 1);
         Review updatedReview = reviewDao.findById(review.getId()); //why do I need to refind this?
         assertNotEquals(rating, updatedReview.getRating());
     }
@@ -74,7 +74,7 @@ public class Sql2oReviewDaoTest {
     @Test
     public void clearAllClearsAll() throws Exception {
         Review review = setupNewReview();
-        Review otherReview = new Review(5, "totally banal");
+        Review otherReview = new Review(5, "totally banal", 1);
         reviewDao.add(review);
         reviewDao.add(otherReview);
         int daoSize = reviewDao.getAll().size();
@@ -88,7 +88,7 @@ public class Sql2oReviewDaoTest {
 
     public Review setupNewReview() {
 
-        return new Review(10, "amazing");
+        return new Review(10, "amazing", 1);
     }
 
 }
